@@ -4,28 +4,28 @@ body {
   color: #e0e0e0;
   margin: 0;
   padding: 20px;
-}
+  }
 
 #app {
   max-width: 900px;
   margin: auto;
-}
+  }
 
 h1, h2, h3 {
   color: #c92b2b;
-}
+  }
 
 .section {
   background-color: #2a2a2a;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 4px;
-}
+  }
 
 ul {
   list-style: disc;
   padding-left: 20px;
-}
+  }
 
 button {
   background-color: #c92b2b;
@@ -35,19 +35,27 @@ button {
   margin-top: 5px;
   cursor: pointer;
   border-radius: 3px;
-}
+  }
 
 button:hover {
   background-color: #a62020;
-}
+  }
 
 #prompt-text {
   background-color: #333;
   padding: 10px;
   border-radius: 4px;
   margin-top: 5px;
-}
+  }
 
 #memory-warning {
   color: #ffaa00;
-}
+  }
+
+#side {
+  vetical-align: top;
+  width: 40%;
+  border: 2px solid #ccc;
+  border-top: 12px solid #ccc;
+  float: right;
+  }
