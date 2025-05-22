@@ -1,1 +1,56 @@
-<html><head></head><body>1</body</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thousand Year Old Vampire</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+  
+<body>
+  <div id="app">
+    <h1 id="headline">Thousand Year Old Vampire</h1>
+    <div id="character-sheet">
+      <h2>Character Sheet</h2>
+      <div class="section" id="skills">
+        <h3>Skills</h3>
+        <ul id="skills-list"></ul>
+        <button onclick="addEntry('skill')">Add Skill</button>
+      </div>
+      <div class="section" id="resources">
+        <h3>Resources</h3>
+        <ul id="resources-list"></ul>
+        <button onclick="addEntry('resource')">Add Resource</button>
+      </div>
+      <div class="section" id="characters">
+        <h3>Characters</h3>
+        <ul id="characters-list"></ul>
+        <button onclick="addEntry('character')">Add Character</button>
+      </div>
+      <div class="section" id="marks">
+        <h3>Marks</h3>
+        <ul id="marks-list"></ul>
+        <button onclick="addEntry('mark')">Add Mark</button>
+      </div>
+      <div class="section" id="experiences">
+        <h3>Experiences <span id="memory-warning"></span></h3>
+        <ul id="experiences-list"></ul>
+        <button onclick="addExperience()">Add Experience</button>
+      </div>
+    </div>
+
+    <div id="game-controls">
+      <h2>Game Controls</h2>
+      <button onclick="rollPrompt()">Roll for Prompt</button>
+      <p><strong>Current Prompt:</strong> <span id="current-prompt"></span></p>
+      <p id="prompt-text"></p>
+    </div>
+  </div>
+
+  <!-- Script posted here because page must load first-->
+  <script src="game.js"></script>
+  <!-- End of Script -->
+</body>
+</html>
