@@ -58,4 +58,12 @@ button:hover {
   border: 2px solid #ccc;
   border-top: 12px solid #ccc;
   float: right;
+  padding-left: 10px;
+  padding-right: 10px;
+  }
+
+#game-controls {
+  float: left;
+  width: 50%;
+  padding-left: 10px;
   }
