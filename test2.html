@@ -1,84 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="UTF-8">
-  <head>
-    <title>Thousand Year Old Vampire</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f9;
-        color: #333;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
-      h1 {
-        color: #444;
-      }
-      .game-container {
-        text-align: center;
-        max-width: 600px;
-        padding: 20px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      .story {
-        margin: 20px 0;
-        font-size: 1.2em;
-      }
-      .actions button {
-        margin: 5px;
-        padding: 10px 20px;
-        font-size: 1em;
-        border: none;
-        border-radius: 4px;
-        background-color: #007BFF;
-        color: white;
-        cursor: pointer;
-      }
-      .actions button:hover {
-        background-color: #0056b3;
-      }
-    </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const storyElement = document.querySelector(".story");
-        const actionsElement = document.querySelector(".actions");
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
 
-        let storyIndex = 0;
-        const stories = [
-          "You awaken in a dark forest, the air thick with mist. What do you do?",
-          "A shadowy figure approaches. Do you confront it or hide?",
-          "You find an ancient tome glowing with a faint light. Do you read it or leave it?"
-        ];
+    .sidebar-tab {
+      position: fixed;
+      top: 100px;
+      right: 0;
+      width: 40%;
+      max-width: 400px;
+      height: 80vh;
+      background-color: #f4f4f4;
+      border-left: 1px solid #ccc;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+      transition: right 0.4s ease;
+      overflow-y: auto;
+      z-index: 1000;
+    }
 
-        const updateStory = () => {
-          storyElement.textContent = stories[storyIndex];
-        };
+    .sidebar-tab.closed {
+      right: -40%;
+    }
 
-        const nextStory = () => {
-          storyIndex = (storyIndex + 1) % stories.length;
-          updateStory();
-        };
+    .tab-handle {
+      position: absolute;
+      top: 50px;
+      left: -40px;
+      width: 40px;
+      height: 120px;
+      background-color: #333;
+      color: #fff;
+      writing-mode: vertical-rl;
+      text-align: center;
+      line-height: 120px;
+      cursor: pointer;
+      transform: rotate(180deg);
+      font-weight: bold;
+      user-select: none;
+    }
 
-        actionsElement.innerHTML = `
-          <button onclick="nextStory()">Next</button>
-        `;
+    .tab-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+      pointer-events: none;
+      z-index: 1001;
+    }
 
-        updateStory();
-      });
-    </script>
-  </head>
-  <body>
-    <div class="game-container">
-      <h1>Thousand Year Old Vampire</h1>
-      <div class="story"></div>
-      <div class="actions"></div>
-    </div>
-  </body>
-</html>
+    .tab-container .tab-handle {
+      margin-top: 20px;
+      pointer-events: auto;
+    }
+
+    .open-all {
+      position: fixed;
+      bottom: 20px;
+      right: -40px;
+      width: 40px;
+      height: 40px;
+      background-color: #f90;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 4px 0 0 4px;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+      pointer-events: auto;
+    }
+
+    .tab-content {
+      padding: 20px;
+    }
+
+    .tab {
+      background-color: #f4f4f4;
+      border-bottom: 1px solid #ccc;
+      min-height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Tab content containers -->
+<div id="tab1" class="sidebar-tab closed">
+  <div class="tab-content">
+    <h2>Tab One</h2>
+    <p>This is the content of Tab One.</p>
+  </div>
+</div>
+
+<div id="tab2" class="sidebar-tab closed">
+  <div class="tab-content">
+    <h2>Tab Two</h2>
+    <p>This is the content of Tab Two.</p>
+  </div>
+</div>
+
+<div id="tab3" class="sidebar-tab closed">
+  <div class="tab-content">
+    <h2>Tab Three</h2>
+    <p>This is the content of Tab Three.</p>
+  </div>
+</div>
+
+<!-- Right-side tab handles -->
+<div class="tab-container">
+  <div class="tab-handle" data-target="tab1">Tab 1</div>
+  <div class="tab-handle" data-target="tab2">Tab 2</div>
+  <div class="tab-handle" data-target="tab3">Tab 3</div>
+</div>
+
+<!-- Open all tabs control -->
+<div class="open-all" id="openAllTabs">
+  →
+</div>
+
+<script>
+  document.querySelectorAll('.tab-handle').forEach(handle => {
+    handle.addEventListener('click', () => {
+      const targetId = handle.getAttribute('data-target');
+      const tab = document.getElementById(targetId);
+      tab.classList.toggle('closed');
+    });
+  });
+
+  document.getElementById('openAllTabs').addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-tab').forEach(tab => {
+      tab.classList.remove('closed');
+    });
