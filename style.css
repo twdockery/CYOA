@@ -138,6 +138,10 @@ textarea {
   border-bottom: 1px solid #ccc;
   min-height: 100%;
   }
+  
+.sidebar-tab.no-transition {
+  transition: none !important;
+}
 
 /***********************************
 Bottom Tab CSS
