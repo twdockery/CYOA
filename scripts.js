@@ -1,5 +1,5 @@
 // Array to store form data
-    const submissions = [];
+    let submissions = [];
 
     // Reference to form and inputs
     let form = document.getElementById('info-form');
@@ -84,8 +84,8 @@ document.querySelectorAll('.tab-handle').forEach(handle => {
 /**************************************
 tab system on the bottom
 **************************************/
-const tabCount = 8;
-const tabContents = [
+let tabCount = 8;
+let tabContents = [
   ['Apple', 'Banana', 'Cherry'],
   ['Egg', 'Fig', 'Grape'],
   ['Item 1', 'Item 2', 'Item 3'],
@@ -96,9 +96,9 @@ const tabContents = [
   ['First', 'Second', 'Third']
 ];
 
-const bottomTray = document.getElementById('bottom-tray');
-const tabs = document.querySelectorAll('.bottom-tab');
-const list = document.getElementById('sideways-list');
+let bottomTray = document.getElementById('bottom-tray');
+let tabs = document.querySelectorAll('.bottom-tab');
+let list = document.getElementById('sideways-list');
 let openTab = null;
 
 function renderList(idx) {
@@ -112,7 +112,7 @@ function renderList(idx) {
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    const idx = Number(tab.dataset.tab);
+    let idx = Number(tab.dataset.tab);
     if (openTab === idx) {
       // Hide tray
       bottomTray.classList.remove('tray-open');
