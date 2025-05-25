@@ -143,14 +143,25 @@ textarea {
 Bottom Tab CSS
 ***********************************/
 
+/***************commenting this out to make it work?
 #bottom-tray {
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 800px; /* 8 tabs × 100px */
+  width: 800px;
   transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
   z-index: 10000;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+********************/
+#bottom-tray {
+    position: fixed;
+    left: 0;
+    bottom: -120px; /* Hidden below the viewport */
+    width: 800px;
+    transition: bottom 0.4s ease, box-shadow 0.3s;
+    z-index: 10000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .tab-row {
@@ -188,10 +199,17 @@ Bottom Tab CSS
   border-top: 2px solid #1976d2;
 }
 
+/***************** commenting out the code to make it work?
 #bottom-tray.tray-open {
   transform: translateY(-10px);
   box-shadow: 0 -8px 32px rgba(0,0,0,0.25);
 }
+********************/
+#bottom-tray.tray-open {
+    bottom: 0;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.25);
+}
+
 #bottom-tray.tray-open .tray-content {
   display: flex;
 }
