@@ -65,54 +65,46 @@ let state = {
    tab system on the right?
 **********************************/
 
-let lastOpenTab = null;
 document.querySelectorAll('.tab-handle').forEach(handle => {
-  handle.addEventListener('click', function() {
-    let targetId = this.getAttribute('data-target');
-    let targetTab = document.getElementById(targetId);
-    let allTabs = document.querySelectorAll('.sidebar-tab');
-
-    if (lastOpenTab === targetTab && !targetTab.classList.contains('closed')) {
-      // Clicked the open tab: close it
-      targetTab.classList.add('closed');
-      lastOpenTab = null;
-    } else {
-      // Close all, open the selected
-      allTabs.forEach(tab => tab.classList.add('closed'));
-      targetTab.classList.remove('closed');
-      lastOpenTab = targetTab;
-    }
+    handle.addEventListener('click', () => {
+      let targetId = handle.getAttribute('data-target');
+      let tab = document.getElementById(targetId);
+      tab.classList.toggle('closed');
+    });
   });
-});
 
-document.getElementById('close-right-tabs').onclick = function() {
-  document.querySelectorAll('.sidebar-tab').forEach(tab => tab.classList.add('closed'));
-  lastOpenTab = null;
-};  
+  document.getElementById('openAllTabs').addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-tab').forEach(tab => {
+      tab.classList.remove('closed');
+    });
+  });
+
+
+  
 /**************************************
-tab system on thebottom
+tab system on the bottom
 **************************************/
-let tabCount = 8;
-let tabContents = [
-  ['Apple', 'Banana', 'Cherry', 'Date'],
-  ['Egg', 'Fig', 'Grape', 'Honeydew'],
+const tabCount = 8;
+const tabContents = [
+  ['Apple', 'Banana', 'Cherry'],
+  ['Egg', 'Fig', 'Grape'],
   ['Item 1', 'Item 2', 'Item 3'],
-  ['A', 'B', 'C', 'D'],
+  ['A', 'B', 'C'],
   ['One', 'Two'],
   ['Alpha', 'Beta', 'Gamma'],
   ['Red', 'Blue'],
-  ['First', 'Second', 'Third', 'Fourth']
+  ['First', 'Second', 'Third']
 ];
 
-let bottomTray = document.getElementById('bottom-tray');
-let tabs = document.querySelectorAll('.bottom-tab');
-let list = document.getElementById('sideways-list');
+const bottomTray = document.getElementById('bottom-tray');
+const tabs = document.querySelectorAll('.bottom-tab');
+const list = document.getElementById('sideways-list');
 let openTab = null;
 
 function renderList(idx) {
   list.innerHTML = '';
   (tabContents[idx] || []).slice(0, 4).forEach(item => {
-    let li = document.createElement('li');
+    const li = document.createElement('li');
     li.textContent = item;
     list.appendChild(li);
   });
@@ -120,7 +112,7 @@ function renderList(idx) {
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    let idx = Number(tab.dataset.tab);
+    const idx = Number(tab.dataset.tab);
     if (openTab === idx) {
       // Hide tray
       bottomTray.classList.remove('tray-open');
