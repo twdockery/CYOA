@@ -65,7 +65,6 @@ textarea {
   tabs CSS ?
 ******************************/
 
-/*********************
 .sidebar-tab {
       position: fixed;
       top: 100px;
@@ -76,8 +75,7 @@ textarea {
       background-color: #f4f4f4;
       border-left: 1px solid #ccc;
       box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-      /*removing this transition
-	      transition: right 0.4s ease;
+      transition: right 0.4s ease;
       overflow-y: auto;
       z-index: 1000;
     }
@@ -85,26 +83,6 @@ textarea {
     .sidebar-tab.closed {
       right: -40%;
     }
-****************************/
-
-.sidebar-tab {
-  display: none;
-  position: fixed;
-  top: 100px;
-  right: 0;
-  width: 40%;
-  max-width: 400px;
-  height: 80vh;
-  background-color: #f4f4f4;
-  border-left: 1px solid #ccc;
-  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-  overflow-y: auto;
-  z-index: 1000;
-}
-
-.sidebar-tab.open {
-  display: block;
-}
 
 .tab-handle {
   background: #eee;
