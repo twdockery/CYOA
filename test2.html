@@ -39,30 +39,72 @@
 	<!-- Tab content containers -->
 <div id="tab1" class="sidebar-tab closed">
   <div class="tab-content">
-    <h2>Tab One</h2>
+    <h2>Skills</h2>
     <p>This is the content of Tab One.</p>
+	<div class="section" id="skills">
+        <h3>Skills</h3>
+        <ul id="skills-list"></ul>
+        <button onclick="addEntry('skill')">Add Skill</button>
+      </div>
   </div>
 </div>
 
 <div id="tab2" class="sidebar-tab closed">
   <div class="tab-content">
-    <h2>Tab Two</h2>
+    <h2>Resources</h2>
     <p>This is the content of Tab Two.</p>
+	<div class="section" id="resources">
+        <h3>Resources</h3>
+        <ul id="resources-list"></ul>
+        <button onclick="addEntry('resource')">Add Resource</button>
+      </div>
   </div>
 </div>
 
 <div id="tab3" class="sidebar-tab closed">
   <div class="tab-content">
-    <h2>Tab Three</h2>
+    <h2>Characters</h2>
     <p>This is the content of Tab Three.</p>
+	<div class="section" id="characters">
+        <h3>Characters</h3>
+        <ul id="characters-list"></ul>
+        <button onclick="addEntry('character')">Add Character</button>
+      </div>
+  </div>
+</div>
+
+<div id="tab4" class="sidebar-tab closed">
+  <div class="tab-content">
+    <h2>Marks</h2>
+    <p>This is the content of Tab Four.</p>
+	<div class="section" id="marks">
+        <h3>Marks</h3>
+        <ul id="marks-list"></ul>
+        <button onclick="addEntry('mark')">Add Mark</button>
+      </div>
+  </div>
+</div>
+
+<div id="tab5" class="sidebar-tab closed">
+  <div class="tab-content">
+    <h2>Tab Five</h2>
+    <p>This is the content of Tab Five.</p>
+	<div class="section" id="experiences">
+        <h3>Experiences <span id="memory-warning"></span></h3>
+        <ul id="experiences-list"></ul>
+        <button onclick="addExperience()">Add Experience</button>
+      </div>
   </div>
 </div>
 
 <!-- Right-side tab handles -->
 <div class="tab-container">
-  <div class="tab-handle" data-target="tab1">Tab 1</div>
-  <div class="tab-handle" data-target="tab2">Tab 2</div>
-  <div class="tab-handle" data-target="tab3">Tab 3</div>
+  <div class="tab-handle" data-target="tab1">Skills</div>
+  <div class="tab-handle" data-target="tab2">Resources</div>
+  <div class="tab-handle" data-target="tab3">Characters</div>
+  <div class="tab-handle" data-target="tab4">Marks
+  </div>
+  <div class="tab-handle" data-target="tab5">Experiences</div>
 </div>
 
 <!-- Open all tabs control -->
@@ -71,31 +113,11 @@
 </div>
 
 
-  <div class="section" id="skills">
-        <h3>Skills</h3>
-        <ul id="skills-list"></ul>
-        <button onclick="addEntry('skill')">Add Skill</button>
-      </div>
-      <div class="section" id="resources">
-        <h3>Resources</h3>
-        <ul id="resources-list"></ul>
-        <button onclick="addEntry('resource')">Add Resource</button>
-      </div>
-      <div class="section" id="characters">
-        <h3>Characters</h3>
-        <ul id="characters-list"></ul>
-        <button onclick="addEntry('character')">Add Character</button>
-      </div>
-      <div class="section" id="marks">
-        <h3>Marks</h3>
-        <ul id="marks-list"></ul>
-        <button onclick="addEntry('mark')">Add Mark</button>
-      </div>
-      <div class="section" id="experiences">
-        <h3>Experiences <span id="memory-warning"></span></h3>
-        <ul id="experiences-list"></ul>
-        <button onclick="addExperience()">Add Experience</button>
-      </div>
+  
+      
+      
+      
+      
   </div>
 
  <script src="scripts.js" async=""></script>
