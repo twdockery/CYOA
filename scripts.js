@@ -65,19 +65,30 @@ let state = {
    tab system on the right?
 **********************************/
 
-document.querySelectorAll('.tab-handle').forEach(handle => {
-    handle.addEventListener('click', () => {
-      let targetId = handle.getAttribute('data-target');
-      let tab = document.getElementById(targetId);
-      tab.classList.toggle('closed');
-    });
-  });
+ document.querySelectorAll('.tab-handle').forEach(handle => {
+  handle.addEventListener('click', () => {
+    const targetId = handle.getAttribute('data-target');
+    const targetTab = document.getElementById(targetId);
+    const sidebarTabs = document.querySelectorAll('.sidebar-tab');
 
-  document.getElementById('openAllTabs').addEventListener('click', () => {
-    document.querySelectorAll('.sidebar-tab').forEach(tab => {
-      tab.classList.remove('closed');
-    });
+    if (targetTab.classList.contains('closed')) {
+      // Instantly close all other tabs (no animation)
+      sidebarTabs.forEach(tab => {
+        if (tab !== targetTab) {
+          tab.classList.add('no-transition');   // 1. Disable transition
+          tab.classList.add('closed');          // 2. Instantly close
+          void tab.offsetWidth;                 // 3. Force reflow
+          tab.classList.remove('no-transition');// 4. Re-enable transition
+        }
+      });
+      // Animate open the selected tab
+      targetTab.classList.remove('closed');
+    } else {
+      // Close this tab with animation
+      targetTab.classList.add('closed');
+    }
   });
+});
 
 
   
