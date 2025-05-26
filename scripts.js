@@ -66,29 +66,36 @@ let state = {
 **********************************/
 
  document.querySelectorAll('.tab-handle').forEach(handle => {
-  handle.addEventListener('click', () => {
-    const targetId = handle.getAttribute('data-target');
-    const targetTab = document.getElementById(targetId);
-    const sidebarTabs = document.querySelectorAll('.sidebar-tab');
-
-    if (targetTab.classList.contains('closed')) {
-      // Instantly close all other tabs (no animation)
-      sidebarTabs.forEach(tab => {
-        if (tab !== targetTab) {
-          tab.classList.add('no-transition');   // 1. Disable transition
-          tab.classList.add('closed');          // 2. Instantly close
-          void tab.offsetWidth;                 // 3. Force reflow
-          tab.classList.remove('no-transition');// 4. Re-enable transition
-        }
-      });
-      // Animate open the selected tab
-      targetTab.classList.remove('closed');
-    } else {
-      // Close this tab with animation
-      targetTab.classList.add('closed');
-    }
-  });
-});
+   handle.addEventListener('click', () => {
+     let targetId = handle.getAttribute('data-target');
+     let targetTab = document.getElementById(targetId);
+     let sidebarTabs = document.querySelectorAll('.sidebar-tab');
+     let isTargetClosed = targetTab.classList.contains('closed');
+     let openTab = Array.from(sidebarTabs).find(tab => !tab.classList.contains('closed'));
+ 
+     if (isTargetClosed) {
+       if (openTab && openTab !== targetTab) {
+         // Instantly switch tabs, no animation at all
+         sidebarTabs.forEach(tab => {
+           tab.classList.add('no-transition');
+           tab.classList.add('closed');
+           void tab.offsetWidth;
+           tab.classList.remove('no-transition');
+         });
+         targetTab.classList.add('no-transition');
+         targetTab.classList.remove('closed');
+         void targetTab.offsetWidth;
+         targetTab.classList.remove('no-transition');
+       } else {
+         // Animate open (no other tab is open)
+         targetTab.classList.remove('closed');
+       }
+     } else {
+       // Animate close
+       targetTab.classList.add('closed');
+     }
+   });
+ });
 
 
   
@@ -115,7 +122,7 @@ let openTab = null;
 function renderList(idx) {
   list.innerHTML = '';
   (tabContents[idx] || []).slice(0, 4).forEach(item => {
-    const li = document.createElement('li');
+    let li = document.createElement('li');
     li.textContent = item;
     list.appendChild(li);
   });
