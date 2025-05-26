@@ -1,88 +1,91 @@
+/*************************
+Form CSS starter
+**************************/
 #form-container {
-	width: 400px;
-	margin: 50px auto;
-	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 6px;
-	font-family: Arial, sans-serif;
-		}
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+  }
 
 #form-header {
-	text-align: center;
-	margin-bottom: 20px;
-	}
+  text-align: center;
+  margin-bottom: 20px;
+  }
 
 .form-field {
-	margin-bottom: 15px;
-	}
+  margin-bottom: 15px;
+  }
 
 label {
-	display: block;
-	margin-bottom: 5px;
-	}
+  display: block;
+  margin-bottom: 5px;
+  }
 
 input[type="text"],
 textarea {
-	width: 100%;
-	padding: 8px;
-	box-sizing: border-box;
-	}
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  }
 
 #submit-button {
-	width: 100%;
-	padding: 10px;
-	background-color: #4285f4;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	}
+  width: 100%;
+  padding: 10px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  }
 
 #submit-button:hover {
-	background-color: #3367d6;
-	}
+  background-color: #3367d6;
+  }
 
 #data-output {
-	margin-top: 30px;
-	padding: 15px;
-	border: 1px solid #999;
-	border-radius: 6px;
-	background-color: #f9f9f9;
-	}
+  margin-top: 30px;
+  padding: 15px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  }
 
 #leftside {
-	float: left;
-	width: 55%;
-	}
-	
+  float: left;
+  width: 55%;
+  }
+  
 #rightside {
-	float: right;
-	width: 40%;
-	}
-	
+  float: right;
+  width: 40%;
+  }
+  
 
 /******************************
-  tabs CSS ?
+  Right side tabs CSS ?
 ******************************/
 
 .sidebar-tab {
-      position: fixed;
-      top: 100px;
-      right: 0;
-      width: 40%;
-      max-width: 400px;
-      height: 80vh;
-      background-color: #f4f4f4;
-      border-left: 1px solid #ccc;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-      transition: right 0.4s ease;
-      overflow-y: auto;
-      z-index: 1000;
-    }
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 40%;
+  max-width: 400px;
+  height: 80vh;
+  background-color: #f4f4f4;
+  border-left: 1px solid #ccc;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+  transition: right 0.4s ease;
+  overflow-y: auto;
+  z-index: 1000;
+  }
 
-    .sidebar-tab.closed {
-      right: -40%;
-    }
+.sidebar-tab.closed {
+right: -40%;
+}
 
 .tab-handle {
   background: #eee;
@@ -95,7 +98,7 @@ textarea {
   transition: background 0.2s;
   }
 
-    /* Make the tab handles stack vertically */
+/* Make the tab handles stack vertically */
 .tab-container {
   display: flex;
   flex-direction: column;
@@ -141,7 +144,7 @@ textarea {
   
 .sidebar-tab.no-transition {
   transition: none !important;
-}
+  }
 
 /***********************************
 Bottom Tab CSS
@@ -159,21 +162,21 @@ Bottom Tab CSS
 }
 ********************/
 #bottom-tray {
-    position: fixed;
-    left: 0;
-    bottom: 0px; /* Hidden below the viewport */
-    width: 800px;
-    transition: bottom .4s ease, box-shadow 0.3s;
-    z-index: 10000;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
+  position: fixed;
+  left: 0;
+  bottom: 0px; /* Hidden below the viewport */
+  width: 800px;
+  transition: bottom .4s ease, box-shadow 0.3s;
+  z-index: 10000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
 
 .tab-row {
   display: flex;
   align-items: flex-end;
   background: #222;
   height: 50px;
-}
+  }
 
 .bottom-tab {
   width: 100px;
@@ -188,7 +191,8 @@ Bottom Tab CSS
   font-weight: bold;
   user-select: none;
   transition: background 0.2s;
-}
+  }
+
 .bottom-tab:last-child { border-right: none; }
 .bottom-tab.active { background: #1976d2; }
 
@@ -201,7 +205,7 @@ Bottom Tab CSS
   justify-content: flex-start;
   overflow: hidden;
   border-top: 2px solid #1976d2;
-}
+  }
 
 /***************** commenting out the code to make it work?
 #bottom-tray.tray-open {
@@ -210,13 +214,13 @@ Bottom Tab CSS
 }
 ********************/
 #bottom-tray.tray-open {
-    bottom: 0;
-    box-shadow: 0 -8px 32px rgba(0,0,0,0.25);
-}
+  bottom: 0;
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.25);
+  }
 
 #bottom-tray.tray-open .tray-content {
   display: flex;
-}
+  }
 
 .sideways-list {
   display: flex;
@@ -227,7 +231,8 @@ Bottom Tab CSS
   list-style: decimal inside;
   height: 80px;
   align-items: center;
-}
+  }
+
 .sideways-list li {
   width: 180px;
   height: 60px;
@@ -240,5 +245,6 @@ Bottom Tab CSS
   justify-content: center;
   font-size: 1.1em;
   font-weight: 500;
-}
+  }
+
 .sideways-list li:last-child { margin-right: 0; }
