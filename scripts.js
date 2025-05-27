@@ -1,3 +1,13 @@
+// setting clear variables
+	let state = {
+	  skills: [],
+	  resources: [],
+	  characters: [],
+	  marks: [],
+	  experiences: []
+	};
+
+
 // Array to store form data
     let submissions = [];
 
@@ -50,13 +60,7 @@ const prompts = {
   // Add more as needed
 };
 
-let state = {
-  skills: [],
-  resources: [],
-  characters: [],
-  marks: [],
-  experiences: []
-};
+
 
 
 
@@ -155,3 +159,139 @@ document.addEventListener('click', e => {
     openTab = null;
   }
 });
+
+
+
+/************************************
+This makes the tabs work and the form work
+************************************/
+
+function updateFormForPrompt(promptObj) {
+  // promptObj: { header, nameLabel, descriptionLabel, nameRequired, descriptionRequired, descriptionMaxLength, ... }
+
+  // Update form header
+  document.getElementById('form-header').textContent = promptObj.header || "Submit Your Info";
+
+  // Update name label and field
+  document.getElementById('name-label').textContent = promptObj.nameLabel || "Name:";
+  document.getElementById('name-input').required = promptObj.nameRequired !== false; // default true
+
+  // Update description label and textarea
+  document.getElementById('description-label').textContent = promptObj.descriptionLabel || "Description:";
+  document.getElementById('description-input').required = promptObj.descriptionRequired !== false; // default true
+  document.getElementById('description-input').maxLength = promptObj.descriptionMaxLength || 400;
+  document.getElementById('description-input').placeholder = promptObj.descriptionPlaceholder || "";
+
+  // Optionally clear previous values or set defaults
+  document.getElementById('name-input').value = "";
+  document.getElementById('description-input').value = "";
+}
+
+
+
+
+/******************************
+These are the game functions
+******************************/
+
+
+
+/****************************************
+This function replaces text in the form
+example: updateLabels("Say","sayit"); will update the form
+***************************************/
+let label1Text = "str";
+let label2Text = "str";
+
+function updateLabels(label1Text, label2Text) {
+    let label1 = document.getElementById('name-label');
+    if (label1) {
+        label1.textContent = label1Text;
+    }
+
+    let label2 = document.getElementById('description-label');
+    if (label2) {
+        label2.textContent = label2Text;
+    }
+}
+
+
+
+
+
+/**********************************************
+This function adds to existing arrays
+example: updateArray("skills") will change the text for skills
+**********************************************/
+
+
+function updateArray(arrayName) {
+    if (arrayName === "skills") {
+        updateLabels("Name your new skill", "Briefly describe it");
+    } else if (arrayName === "resources") {
+        updateLabels("Name your new resource", "Tell us about it");
+    } else if (arrayName === "characters") {
+        updateLabels("Who is this new person in your life", "Tell us about them");
+    } else if (arrayName === "marks") {
+        updateLabels("Describe the mark", "How did you get it and how does it affect you");
+    } else if (arrayName === "experiences") {
+        updateLabels("Please name your memory", "Give us one sentence about it");
+    } else {
+        updateLabels("Input Title", "Input Description");
+    }
+	  
+    const submitButton = document.getElementById('submit-button');
+    if (!submitButton.dataset.bound || submitButton.dataset.bound !== arrayName) {
+        submitButton.removeEventListener('click', handleSubmit); // prevent duplicate bindings
+        submitButton.addEventListener('click', handleSubmit);
+        submitButton.dataset.bound = arrayName;
+    }
+
+
+
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        const input1 = document.getElementById('input1');
+        const input2 = document.getElementById('input2');
+
+        if (!input1 || !input2) return;
+
+        const entry = {
+            title: input1.value.trim(),
+            description: input2.value.trim()
+        };
+
+        if (entry.title === "" || entry.description === "") return;
+
+        switch (arrayName) {
+            case "skills":
+                skills.push(entry);
+                break;
+            case "resources":
+                if (!window.resources) window.resources = [];
+                window.resources.push(entry);
+                break;
+			case "marks":
+                if (!window.marks) window.marks = [];
+                window.marks.push(entry);
+                break;
+            case "characters":
+                if (!window.characters) window.characters = [];
+                window.characters.push(entry);
+                break;
+			case "experiences":
+                if (!window.experiences) window.experiences = [];
+                window.experiences.push(entry);
+                break;
+            default:
+                if (!window[arrayName]) window[arrayName] = [];
+                window[arrayName].push(entry);
+        }
+
+        fullStory.push(entry);
+
+        input1.value = "";
+        input2.value = "";
+    }
+}
